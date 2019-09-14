@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Symfony\Component\HttpFoundation\Response;
 use Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -79,18 +80,18 @@ class AuthController extends Controller
         if (!$user) {
             return response()->json([
                 'error' => 'Email does not exist.'
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         }
         if (Hash::check($this->request->input('password'), $user->password)) {
             $tokens = $this->jwt($user);
             return response()->json([
                 'access_token' => $tokens['access_token'],
                 'refresh_token' => $tokens['refresh_token'],
-            ], 200);
+            ], Response::HTTP_OK);
         }
         return response()->json([
             'error' => 'Email or password is wrong.'
-        ], 400);
+        ], Response::HTTP_BAD_REQUEST);
     }
 
     public function refreshToken(Request $request)
@@ -101,25 +102,25 @@ class AuthController extends Controller
             // Unauthorized response if token not there
             return response()->json([
                 'error' => 'Token not provided.'
-            ], 401);
+            ], Response::HTTP_UNAUTHORIZED);
         }
         try {
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
             return response()->json([
                 'error' => 'Provided token is expired.'
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         } catch(Exception $e) {
             return response()->json([
                 'error' => 'An error while decoding token.'
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         }
 
 
         if ($credentials->iss !== 'debtor-jwt-refresh') {
             return response()->json([
                 'error' => 'An error while decoding token.'
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         }
 
         $user = User::find($credentials->sub);
@@ -134,7 +135,7 @@ class AuthController extends Controller
         else {
             return response()->json([
                 'error' => 'Invalid token'
-            ], 400);
+            ], Response::HTTP_BAD_REQUEST);
         }
     }
 }
