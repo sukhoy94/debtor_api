@@ -87,6 +87,12 @@ class AuthController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
+        if (!$user->hasVerifiedEmail()) {
+            return response()->json([
+                'error' => 'Email is not confirmed yet. Please check your inbox.'
+            ], Response::HTTP_CONFLICT);
+        }
+
         if (Hash::check($request->input('password'), $user->password)) {
             $tokens = $this->generateJWTTokensForUser($user);
             return response()->json([
