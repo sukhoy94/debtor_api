@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\UserAuthenticateRequest;
 use App\Repositories\User\UserEloquentRepository;
+use App\Repositories\User\UserRepositoryInterface;
 use App\Services\UserService;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\JsonResponse;
@@ -35,10 +36,9 @@ class AuthController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param UserEloquentRepository $repository
+     * @param UserRepositoryInterface $repository
      */
-    public function __construct(UserEloquentRepository $repository)
+    public function __construct(UserRepositoryInterface $repository)
     {
         $this->userRepository = $repository;
     }
