@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\User\UserAuthenticateRequest;
 use App\Repositories\User\UserEloquentRepository;
 use App\Services\UserService;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Validator;
@@ -36,9 +38,8 @@ class AuthController extends Controller
      * @param \Illuminate\Http\Request $request
      * @param UserEloquentRepository $repository
      */
-    public function __construct(Request $request, UserEloquentRepository $repository)
+    public function __construct(UserEloquentRepository $repository)
     {
-        $this->request = $request;
         $this->userRepository = $repository;
     }
 
@@ -73,19 +74,12 @@ class AuthController extends Controller
     /**
      * Authenticate a user and return the token if the provided credentials are correct.
      *
-     * @param User $user
+     * @param UserAuthenticateRequest $request
      * @return mixed
-     * @throws \Illuminate\Validation\ValidationException
      */
-    public function authenticate()
+    public function authenticate(UserAuthenticateRequest $request)
     {
-        // TODO: validation not working !
-        $this->validate($this->request, [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        $user = $this->userRepository->getUserByEmail($this->request->input('email'));
+        $user = $this->userRepository->getUserByEmail($request->input('email'));
 
         if (!$user) {
             return response()->json([
@@ -93,7 +87,7 @@ class AuthController extends Controller
             ], Response::HTTP_BAD_REQUEST);
         }
 
-        if (Hash::check($this->request->input('password'), $user->password)) {
+        if (Hash::check($request->input('password'), $user->password)) {
             $tokens = $this->generateJWTTokensForUser($user);
             return response()->json([
                 'access_token' => $tokens['access_token'],
