@@ -10,5 +10,16 @@ interface UserRepositoryInterface
      * @param string $email
      * @return User|null
      */
-    public function getUserByEmail($email);
+    public function getByEmail($email);
+
+    /**
+     * @param array $userData
+     * [
+     *  'name',
+     *  'email'
+     *  'password',
+     * ]
+     * @return mixed
+     */
+    public function create($userData);
 }

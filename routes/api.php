@@ -17,5 +17,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('auth/login',['uses' => 'AuthController@authenticate']);
-Route::post('auth/refresh',['uses' => 'AuthController@refreshToken']);
+Route::prefix('auth')->group(function () {
+    Route::post('login', 'AuthController@authenticate');
+    Route::post('refresh', 'AuthController@refreshToken');
+    Route::post('register', 'User\UserController@store');
+});
+

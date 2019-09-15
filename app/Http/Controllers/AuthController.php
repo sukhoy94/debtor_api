@@ -79,7 +79,7 @@ class AuthController extends Controller
      */
     public function authenticate(UserAuthenticateRequest $request)
     {
-        $user = $this->userRepository->getUserByEmail($request->input('email'));
+        $user = $this->userRepository->getByEmail($request->input('email'));
 
         if (!$user) {
             return response()->json([
@@ -147,5 +147,10 @@ class AuthController extends Controller
                 'error' => 'Invalid token'
             ], Response::HTTP_UNAUTHORIZED);
         }
+    }
+
+    public function registerUser()
+    {
+
     }
 }
