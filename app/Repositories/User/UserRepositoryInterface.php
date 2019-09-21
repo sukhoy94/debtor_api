@@ -3,6 +3,7 @@
 namespace App\Repositories\User;
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 interface UserRepositoryInterface
 {
@@ -22,4 +23,11 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function create($userData);
+
+    /**
+     * @param string $email
+     * @throws ModelNotFoundException
+     * @return User
+     */
+    public function getUserByEmail($email);
 }

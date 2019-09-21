@@ -5,6 +5,7 @@ namespace App\Repositories\User;
 
 
 use App\Models\User;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class UserEloquentRepository implements UserRepositoryInterface
 {
@@ -12,8 +13,7 @@ class UserEloquentRepository implements UserRepositoryInterface
      * @param string $email
      * @return User|null
      */
-    public function getByEmail($email)
-    {
+    public function getByEmail($email) {
         return User::where('email', $email)->first();
     }
 
@@ -21,8 +21,16 @@ class UserEloquentRepository implements UserRepositoryInterface
      * @param array $userData
      * @return mixed|void
      */
-    public function create($userData)
-    {
+    public function create($userData) {
         User::create($userData);
+    }
+
+    /**
+     * @param string $email
+     * @throws ModelNotFoundException
+     * @return User
+     */
+    public function getUserByEmail($email) {
+        return User::where(['email' => $email])->firstOrFail();
     }
 }

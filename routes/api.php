@@ -23,3 +23,5 @@ Route::prefix('auth')->group(function () {
     Route::post('register', 'User\UserController@store');
 });
 
+Route::post('email', 'EmailController@send');
+
