@@ -22,6 +22,3 @@ Route::prefix('auth')->group(function () {
     Route::post('refresh', 'AuthController@refreshToken');
     Route::post('register', 'User\UserController@store');
 });
-
-Route::post('email', 'EmailController@send');
-
