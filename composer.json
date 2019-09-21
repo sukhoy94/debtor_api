@@ -11,10 +11,10 @@
         "php": "^7.2",
         "fideloper/proxy": "^4.0",
         "firebase/php-jwt": "^5.0",
+        "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^6.0",
         "laravel/homestead": "^9.1",
-        "laravel/tinker": "^1.0",
-        "ext-http": "*"
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
