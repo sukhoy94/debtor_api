@@ -30,4 +30,11 @@ interface UserRepositoryInterface
      * @return User
      */
     public function getUserByEmail($email);
+
+    /**
+     * @param string $token
+     * @throws ModelNotFoundException
+     * @return mixed
+     */
+    public function getByVerificationToken($token);
 }

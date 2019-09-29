@@ -38,7 +38,7 @@ class EmailService
             'from'    => $this->from['verification'],
             'to'      => $to,
             'subject' => 'Confirm your account please...',
-            'text'    => $user->email_verification_token,
+            'text'    => 'Confirmation link: '.route('user.verify', ['token' => $user->email_verification_token]),
         ]);
     }
 

@@ -6,6 +6,7 @@ use App\Http\Requests\User\UserRegisterRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\EmailService;
+use App\Services\UserService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,6 +16,7 @@ class UserController extends Controller
 {
     private $userRepository;
     private $emailService;
+    private $userService;
 
     public function __construct(UserRepositoryInterface $repository, EmailService $emailService) {
         $this->userRepository = $repository;
@@ -43,4 +45,16 @@ class UserController extends Controller
             'message' => 'User created successfully',
         ], Response::HTTP_OK);
     }
+
+    /**
+     * @param string $verificationToken
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function verifyUser($token) {
+        $user = $this->userRepository->getByVerificationToken($token);
+        $user->markEmailAsVerified();
+
+        return view('users.verify', ['success' => (bool)$user->email_verified_at]);
+    }
+
 }

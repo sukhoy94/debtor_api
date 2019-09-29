@@ -33,4 +33,13 @@ class UserEloquentRepository implements UserRepositoryInterface
     public function getUserByEmail($email) {
         return User::where(['email' => $email])->firstOrFail();
     }
+
+    /**
+     * @param string $token
+     * @return mixed
+     * @throws ModelNotFoundException
+     */
+    public function getByVerificationToken($token) {
+        return User::where(['email_verification_token' => $token])->firstOrFail();
+    }
 }
