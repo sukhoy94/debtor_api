@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\UserAuthenticateRequest;
 use App\Repositories\User\UserEloquentRepository;
 use App\Repositories\User\UserRepositoryInterface;
-use App\Services\UserService;
+use App\Traits\ApiResponser;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\Response;
 use Validator;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    use ApiResponser;
 
     const ACCESS_TOKEN_LIFE_TIME = 60*60;
     const ACCESS_TOKEN_ISS = 'debtor-jwt-access';
@@ -82,15 +84,11 @@ class AuthController extends Controller
         $user = $this->userRepository->getByEmail($request->input('email'));
 
         if (!$user) {
-            return response()->json([
-                'error' => 'Email does not exist.'
-            ], Response::HTTP_BAD_REQUEST);
+            return $this->errorRespose(Lang::get('info.email_does_not_exist'), Response::HTTP_CONFLICT);
         }
 
         if (!$user->hasVerifiedEmail()) {
-            return response()->json([
-                'error' => 'Email is not confirmed yet. Please check your inbox.'
-            ], Response::HTTP_CONFLICT);
+            return $this->errorRespose(Lang::get('info.email_not_confirmed_yet'), Response::HTTP_CONFLICT);
         }
 
         if (Hash::check($request->input('password'), $user->password)) {
@@ -101,9 +99,7 @@ class AuthController extends Controller
             ], Response::HTTP_OK);
         }
 
-        return response()->json([
-            'error' => 'Email or password is wrong.'
-        ], Response::HTTP_BAD_REQUEST);
+        return $this->errorRespose(Lang::get('info.email_password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -115,17 +111,12 @@ class AuthController extends Controller
         $token = $request->token;
 
         if(!$token) {
-            // Unauthorized response if token not there
-            return response()->json([
-                'error' => 'Token not provided.'
-            ], Response::HTTP_UNAUTHORIZED);
+            return $this->errorRespose(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
         }
         try {
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
-            return response()->json([
-                'error' => 'Provided token is expired.'
-            ], Response::HTTP_UNAUTHORIZED);
+            return $this->errorRespose(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
         } catch(Exception $e) {
             return response()->json([
                 'error' => 'An error while decoding token.'

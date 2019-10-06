@@ -18,7 +18,7 @@ trait ApiResponser
             'message' => $message,
             'code' => $code,
             'success' => true,
-        ]);
+        ], $code);
     }
 
     /**
@@ -31,6 +31,6 @@ trait ApiResponser
             'message' => $message,
             'code' => $code,
             'success' => false,
-        ]);
+        ], $code);
     }
 }
