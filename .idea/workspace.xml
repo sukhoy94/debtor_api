@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Traits/ApiResponser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/info.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -230,7 +230,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570354266886</updated>
-      <workItem from="1570354268114" duration="4020000" />
+      <workItem from="1570354268114" duration="4428000" />
     </task>
     <servers />
   </component>

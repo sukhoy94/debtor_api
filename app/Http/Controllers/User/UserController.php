@@ -7,9 +7,7 @@ use App\Http\Requests\User\UserRegisterRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\EmailService;
-use App\Services\UserService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,7 +16,6 @@ class UserController extends Controller
 {
     private $userRepository;
     private $emailService;
-    private $userService;
 
     public function __construct(UserRepositoryInterface $repository, EmailService $emailService) {
         $this->userRepository = $repository;
