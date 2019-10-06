@@ -37,14 +37,14 @@ class UserController extends Controller
             $user = $this->userRepository->getUserByEmail($request->email);
         } catch (ModelNotFoundException $exception) {
             return response()->json([
-                'message' => 'Some error had place, please try again',
+                'message' => Lang::get('info.default_error'),
             ], Response::HTTP_BAD_REQUEST);
         }
 
         $this->emailService->sendVerificationEmail($user);
 
         return response()->json([
-            'message' => 'User created successfully',
+            'message' => Lang::get('info.user_created_successfully'),
         ], Response::HTTP_OK);
     }
 
@@ -68,8 +68,8 @@ class UserController extends Controller
 
         $user->email_verification_token = User::generateEmailToken();
         $user->save();
-        $this->emailService->sendVerificationEmail($user);
 
+        $this->emailService->sendVerificationEmail($user);
         return response()->json([
             'message' => Lang::get('info.verification_link_sended'),
         ], Response::HTTP_OK);
