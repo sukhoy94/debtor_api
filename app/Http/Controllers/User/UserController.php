@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\User\CreateActivationLinkRequest;
 use App\Http\Requests\User\UserRegisterRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
@@ -10,6 +11,7 @@ use App\Services\UserService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -57,4 +59,19 @@ class UserController extends Controller
         return view('users.verify', ['success' => (bool)$user->email_verified_at]);
     }
 
+    public function createActivationLink(CreateActivationLinkRequest $request) {
+        $user = $this->userRepository->getUserByEmail($request->email);
+
+        if ($user->hasVerifiedEmail()) {
+            return \response()->json(['message' => Lang::get('info.email_already_verified'), 'code' => Response::HTTP_CONFLICT],  Response::HTTP_CONFLICT);
+        }
+
+        $user->email_verification_token = User::generateEmailToken();
+        $user->save();
+        $this->emailService->sendVerificationEmail($user);
+
+        return response()->json([
+            'message' => Lang::get('info.verification_link_sended'),
+        ], Response::HTTP_OK);
+    }
 }

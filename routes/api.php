@@ -21,4 +21,5 @@ Route::prefix('auth')->group(function () {
     Route::post('login', 'AuthController@authenticate');
     Route::post('refresh', 'AuthController@refreshToken');
     Route::post('register', 'User\UserController@store');
+    Route::post('activationlink', 'User\UserController@createActivationLink');
 });
