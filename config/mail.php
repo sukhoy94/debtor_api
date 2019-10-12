@@ -133,4 +133,13 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+    /*
+     * dev email address
+     * */
+
+    'test' => [
+        'to' => env('TEST_EMAIL_ADDRESS'),
+        'from' => env('TEST_EMAIL_FROM_ADDRESS'),
+    ]
+
 ];

@@ -16,9 +16,8 @@ class EmailService
         'verification' => 'debtor-verification@example.com',
     ];
 
-    public function __construct()
-    {
-        $this->mg = Mailgun::create(env('MAILGUN_SECRET'));
+    public function __construct() {
+        $this->mg = Mailgun::create(config('mailgun.secret'));
     }
 
     public function sendVerificationEmail(User $user) {
@@ -26,15 +25,14 @@ class EmailService
             return;
         }
 
-
         if (App::environment('local')) {
-            $to = env('TEST_EMAIL_ADDRESS');
+            $to = config('mail.test.to');
         }
         else {
             $to = $user->email;
         }
 
-        $this->mg->messages()->send(env('MAILGUN_DOMAIN'), [
+        $this->mg->messages()->send(config('mailgun.domain'), [
             'from'    => $this->from['verification'],
             'to'      => $to,
             'subject' => 'Confirm your account please...',
@@ -43,9 +41,9 @@ class EmailService
     }
 
     public function sentTestEmail($text = 'Sample text', $subject = 'Test subject') {
-        $this->mg->messages()->send(env('MAILGUN_DOMAIN'), [
-            'from'    => env('TEST_EMAIL_FROM_ADDRESS'),
-            'to'      => env('TEST_EMAIL_ADDRESS'),
+        $this->mg->messages()->send(config('mailgun.domain'), [
+            'from'    => config('mail.test.from'),
+            'to'      => config('mail.test.to'),
             'subject' => $subject,
             'text'    => $text,
         ]);
