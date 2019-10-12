@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function generateEmailToken() {
-        return Str::random(32);
+    public static function generateEmailToken($userEmail) {
+        return Str::random(32).md5($userEmail);
     }
 
     public function setPasswordAttribute($password) {
@@ -54,7 +54,7 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function($item) {
-            $item->attributes['email_verification_token'] = self::generateEmailToken();
+            $item->attributes['email_verification_token'] = self::generateEmailToken($item->attributes['email']);
         });
     }
 }

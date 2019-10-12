@@ -74,7 +74,7 @@ class UserController extends Controller
             return $this->errorRespose(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);
         }
 
-        $user->email_verification_token = User::generateEmailToken();
+        $user->email_verification_token = User::generateEmailToken($user->email);
         $user->save();
 
         $this->emailService->sendVerificationEmail($user);
