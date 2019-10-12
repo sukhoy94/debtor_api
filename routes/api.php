@@ -23,3 +23,7 @@ Route::prefix('auth')->group(function () {
     Route::post('register', 'User\UserController@store');
     Route::post('activationlink', 'User\UserController@createActivationLink');
 });
+
+Route::group(['middleware' => ['jwt.verify']], function() {
+    Route::get('/users/me', 'User\UserController@getAuthenticatedUser');
+});

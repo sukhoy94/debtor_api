@@ -9,6 +9,8 @@ use App\Repositories\User\UserRepositoryInterface;
 use App\Services\EmailService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\Response;
 use App\Traits\ApiResponser;
@@ -79,5 +81,11 @@ class UserController extends Controller
 
         $this->emailService->sendVerificationEmail($user);
         return $this->successResponse(Lang::get('info.verification_link_sended'));
+    }
+
+    public function getAuthenticatedUser(Request $request) {
+        $user = $request->currentUser;
+
+
     }
 }

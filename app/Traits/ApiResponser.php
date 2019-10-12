@@ -33,4 +33,19 @@ trait ApiResponser
             'success' => false,
         ], $code);
     }
+
+    /**
+     * @param string $message
+     * @param int $code
+     * @param array $data
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function successResposeWithData($message = '', $code = Response::HTTP_OK, $data = []) {
+        return response()->json([
+            'message' => $message,
+            'code' => $code,
+            'success' => true,
+            'data' => $data,
+        ], $code);
+    }
 }

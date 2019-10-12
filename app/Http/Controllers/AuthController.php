@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\UserAuthenticateRequest;
+use App\Models\JsonWebToken;
 use App\Repositories\User\UserEloquentRepository;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Traits\ApiResponser;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Lang;
+use Psy\Util\Json;
 use Symfony\Component\HttpFoundation\Response;
 use Validator;
 use Illuminate\Http\Request;
@@ -21,10 +23,6 @@ class AuthController extends Controller
 {
     use ApiResponser;
 
-    const ACCESS_TOKEN_LIFE_TIME = 60*60;
-    const ACCESS_TOKEN_ISS = 'debtor-jwt-access';
-    const REFRESH_TOKEN_LIFE_TIME = 24*60*60;
-    const REFRESH_TOKEN_ISS = "debtor-jwt-refresh";
 
     private $userRepository;
 
@@ -54,17 +52,17 @@ class AuthController extends Controller
     protected function generateJWTTokensForUser(User $user)
     {
         $access_token = [
-            'iss' => self::ACCESS_TOKEN_ISS,
+            'iss' => JsonWebToken::ACCESS_TOKEN_ISS,
             'sub' => $user->id,
             'iat' => time(),
-            'exp' => time() + self::ACCESS_TOKEN_LIFE_TIME,
+            'exp' => time() + JsonWebToken::ACCESS_TOKEN_LIFE_TIME,
         ];
 
         $refresh_token = [
-            'iss' => self::REFRESH_TOKEN_ISS,
+            'iss' => JsonWebToken::REFRESH_TOKEN_ISS,
             'sub' => $user->id,
             'iat' => time(),
-            'exp' => time() + self::REFRESH_TOKEN_LIFE_TIME,
+            'exp' => time() + JsonWebToken::REFRESH_TOKEN_LIFE_TIME,
         ];
 
         return [
@@ -93,7 +91,7 @@ class AuthController extends Controller
 
         if (Hash::check($request->input('password'), $user->password)) {
             $tokens = $this->generateJWTTokensForUser($user);
-            return response()->json([
+            return response()->json([ // TODO: use apiResponser
                 'access_token' => $tokens['access_token'],
                 'refresh_token' => $tokens['refresh_token'],
             ], Response::HTTP_OK);
@@ -117,16 +115,16 @@ class AuthController extends Controller
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
             return $this->errorRespose(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
-        } catch(Exception $e) {
+        } catch(Exception $e) { // TODO: use apiResponser
             return response()->json([
-                'error' => 'An error while decoding token.'
+                'error' => 'An error while decoding token.' // TODO: use Lang instead
             ], Response::HTTP_UNAUTHORIZED);
         }
 
 
-        if ($credentials->iss !== 'debtor-jwt-refresh') {
-            return response()->json([
-                'error' => 'An error while decoding token.'
+        if ($credentials->iss !== JsonWebToken::REFRESH_TOKEN_ISS) {
+            return response()->json([ // TODO: use apiResponser
+                'error' => 'An error while decoding token.' // TODO: use Lang instead
             ], Response::HTTP_UNAUTHORIZED);
         }
 
@@ -134,13 +132,13 @@ class AuthController extends Controller
 
         if ($user) {
             $tokens = $this->generateJWTTokensForUser($user);
-            return response()->json([
+            return response()->json([ // TODO: use apiResponser
                 'access_token' => $tokens['access_token'],
                 'refresh_token' => $tokens['refresh_token'],
             ]);
         }
         else {
-            return response()->json([
+            return response()->json([ // TODO: use apiResponser
                 'error' => 'Invalid token'
             ], Response::HTTP_UNAUTHORIZED);
         }
