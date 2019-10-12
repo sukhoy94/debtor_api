@@ -67,8 +67,6 @@ class AuthController extends Controller
             'exp' => time() + self::REFRESH_TOKEN_LIFE_TIME,
         ];
 
-        dd(config('api.jwt.secret'));
-
         return [
             'access_token' => JWT::encode($access_token, config('api.jwt.secret')),
             'refresh_token' => JWT::encode($refresh_token, config('api.jwt.secret')),
