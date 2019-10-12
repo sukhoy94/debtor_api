@@ -11,17 +11,29 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\Response;
+use App\Traits\ApiResponser;
 
 class UserController extends Controller
 {
+    use ApiResponser;
+
     private $userRepository;
     private $emailService;
 
+    /**
+     * UserController constructor.
+     * @param UserRepositoryInterface $repository
+     * @param EmailService $emailService
+     */
     public function __construct(UserRepositoryInterface $repository, EmailService $emailService) {
         $this->userRepository = $repository;
         $this->emailService = $emailService;
     }
 
+    /**
+     * @param UserRegisterRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(UserRegisterRequest $request) {
 
         $this->userRepository->create([
@@ -33,16 +45,11 @@ class UserController extends Controller
         try {
             $user = $this->userRepository->getUserByEmail($request->email);
         } catch (ModelNotFoundException $exception) {
-            return response()->json([
-                'message' => Lang::get('info.default_error'),
-            ], Response::HTTP_BAD_REQUEST);
+            return $this->errorRespose(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
         }
 
         $this->emailService->sendVerificationEmail($user);
-
-        return response()->json([
-            'message' => Lang::get('info.user_created_successfully'),
-        ], Response::HTTP_OK);
+        return $this->successResponse(Lang::get('info.user_created_successfully'), Response::HTTP_CREATED);
     }
 
     /**
@@ -56,19 +63,21 @@ class UserController extends Controller
         return view('users.verify', ['success' => (bool)$user->email_verified_at]);
     }
 
+    /**
+     * @param CreateActivationLinkRequest $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function createActivationLink(CreateActivationLinkRequest $request) {
         $user = $this->userRepository->getUserByEmail($request->email);
 
         if ($user->hasVerifiedEmail()) {
-            return \response()->json(['message' => Lang::get('info.email_already_verified'), 'code' => Response::HTTP_CONFLICT],  Response::HTTP_CONFLICT);
+            return $this->errorRespose(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);
         }
 
         $user->email_verification_token = User::generateEmailToken();
         $user->save();
 
         $this->emailService->sendVerificationEmail($user);
-        return response()->json([
-            'message' => Lang::get('info.verification_link_sended'),
-        ], Response::HTTP_OK);
+        return $this->successResponse(Lang::get('info.verification_link_sended'));
     }
 }
