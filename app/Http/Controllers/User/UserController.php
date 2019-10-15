@@ -47,7 +47,7 @@ class UserController extends Controller
         ]);
 
         try {
-            $user = $this->userRepository->getUserByEmail($request->email);
+            $user = $this->userRepository->getByEmail($request->email);
         } catch (ModelNotFoundException $exception) {
             return $this->errorRespose(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
         }
@@ -72,7 +72,7 @@ class UserController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function createActivationLink(CreateActivationLinkRequest $request) {
-        $user = $this->userRepository->getUserByEmail($request->email);
+        $user = $this->userRepository->getByEmail($request->email);
 
         if ($user->hasVerifiedEmail()) {
             return $this->errorRespose(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);

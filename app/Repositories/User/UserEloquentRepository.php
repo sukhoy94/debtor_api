@@ -14,7 +14,7 @@ class UserEloquentRepository implements UserRepositoryInterface
      * @return User|null
      */
     public function getByEmail($email) {
-        return User::where('email', $email)->first();
+        return User::where('email', $email)->firstOrFail();
     }
 
     /**
@@ -23,15 +23,6 @@ class UserEloquentRepository implements UserRepositoryInterface
      */
     public function create($userData) {
         User::create($userData);
-    }
-
-    /**
-     * @param string $email
-     * @throws ModelNotFoundException
-     * @return User
-     */
-    public function getUserByEmail($email) {
-        return User::where(['email' => $email])->firstOrFail();
     }
 
     /**

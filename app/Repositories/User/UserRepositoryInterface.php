@@ -25,13 +25,6 @@ interface UserRepositoryInterface
     public function create($userData);
 
     /**
-     * @param string $email
-     * @throws ModelNotFoundException
-     * @return User
-     */
-    public function getUserByEmail($email);
-
-    /**
      * @param string $token
      * @throws ModelNotFoundException
      * @return mixed
