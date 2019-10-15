@@ -109,6 +109,9 @@
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/league/fractal" />
+      <path value="$PROJECT_DIR$/vendor/spatie/fractalistic" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-fractal" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

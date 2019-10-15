@@ -47,7 +47,6 @@ class JwtMiddleware
             return $this->errorRespose('No such user', Response::HTTP_NOT_FOUND);
         }
 
-        // Now let's put the user in the request class so that you can grab it from there
         $request->currentUser = $user;
         return $next($request);
     }

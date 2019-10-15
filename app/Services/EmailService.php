@@ -48,4 +48,14 @@ class EmailService
             'text'    => $text,
         ]);
     }
+
+    public function sendErrorReportEmail($html, $subject)
+    {
+        $this->mg->messages()->send(config('mailgun.domain'), [
+            'from'    => config('mail.test.from'),
+            'to'      => 'report_error@sukhoi.hekko24.pl',
+            'subject' => $subject,
+            'html'    => $html,
+        ]);
+    }
 }

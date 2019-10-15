@@ -7,11 +7,13 @@ use App\Http\Requests\User\UserRegisterRequest;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\EmailService;
+use App\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use League\Fractal\Resource\Item;
 use Symfony\Component\HttpFoundation\Response;
 use App\Traits\ApiResponser;
 
@@ -84,8 +86,6 @@ class UserController extends Controller
     }
 
     public function getAuthenticatedUser(Request $request) {
-        $user = $request->currentUser;
-
 
     }
 }
