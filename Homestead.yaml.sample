@@ -1,0 +1,26 @@
+ip: 192.168.10.11
+memory: 2048
+cpus: 2
+provider: virtualbox
+authorize: ~/.ssh/id_rsa.pub
+keys:
+    - ~/.ssh/id_rsa
+folders:
+    -
+        map: 'D:\coding\debtor\debtor_api'
+        to: /home/vagrant/code
+sites:
+    -
+        map: debtor_api.test
+        to: /home/vagrant/code/public
+databases:
+    - homestead
+features:
+    -
+        mariadb: false
+    -
+        ohmyzsh: false
+    -
+        webdriver: false
+name: debtor-api
+hostname: debtor-api

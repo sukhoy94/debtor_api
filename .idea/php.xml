@@ -51,7 +51,6 @@
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
-      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
@@ -112,6 +111,9 @@
       <path value="$PROJECT_DIR$/vendor/league/fractal" />
       <path value="$PROJECT_DIR$/vendor/spatie/fractalistic" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-fractal" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark-ext-table" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
