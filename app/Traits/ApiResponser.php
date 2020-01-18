@@ -21,15 +21,13 @@ trait ApiResponser
     }
 
     /**
-     * @param string $message
      * @param array $data
      * @param int $http_code
      * @return \Illuminate\Http\JsonResponse
      */
-    public function successResponseWithData($message = '', $data = [], $http_code = Response::HTTP_OK)
+    public function successResponseWithData($data = [], $http_code = Response::HTTP_OK)
     {
         return response()->json([
-            'message' => $message,
             'data' => $data,
         ])->setStatusCode($http_code);
     }

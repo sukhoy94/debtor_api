@@ -58,7 +58,6 @@ class UserController extends Controller
         $tokens = JsonWebToken::generateJWTTokensForUser($user);
 
         return  $this->successResponseWithData(
-            Lang::get('info.user_created_successfully'),
             $tokens,
             Response::HTTP_CREATED
         );
@@ -97,6 +96,6 @@ class UserController extends Controller
 
     public function getAuthenticatedUser(Request $request)
     {
-
+        return 'Hello authenticated user!';
     }
 }

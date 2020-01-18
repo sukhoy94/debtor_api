@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 class JwtMiddleware
 {
     use ApiResponser;
+
     /**
      * Handle an incoming request.
      *
@@ -25,7 +26,8 @@ class JwtMiddleware
     {
         $token = $request->bearerToken();
 
-        if(!$token) {
+        if (!$token)
+        {
             return $this->errorResponse('Authorization token not provided', Response::HTTP_UNAUTHORIZED);
         }
 
@@ -37,13 +39,15 @@ class JwtMiddleware
             return $this->errorResponse('An error while decoding token', Response::HTTP_BAD_REQUEST);
         }
 
-        if ($credentials->iss !== JsonWebToken::ACCESS_TOKEN_ISS) {
+        if ($credentials->iss !== JsonWebToken::ACCESS_TOKEN_ISS)
+        {
             return $this->errorResponse('An error while decoding token', Response::HTTP_BAD_REQUEST);
         }
 
         $user = User::find($credentials->sub);
 
-        if (!$user) {
+        if (!$user)
+        {
             return $this->errorResponse('No such user', Response::HTTP_NOT_FOUND);
         }
 
