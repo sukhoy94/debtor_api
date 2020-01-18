@@ -34,14 +34,14 @@ class JwtMiddleware
         try {
             $credentials = JWT::decode($token, config('api.jwt.secret'), ['HS256']);
         } catch(ExpiredException $e) {
-            return $this->errorResponse('Provided token is expired', Response::HTTP_BAD_REQUEST);
-        } catch(Exception $e) {
-            return $this->errorResponse('An error while decoding token', Response::HTTP_BAD_REQUEST);
+            return $this->errorResponse('Provided token is expired', Response::HTTP_UNAUTHORIZED);
+        } catch(\Exception $e) {
+            return $this->errorResponse('An error while decoding token', Response::HTTP_UNAUTHORIZED);
         }
 
         if ($credentials->iss !== JsonWebToken::ACCESS_TOKEN_ISS)
         {
-            return $this->errorResponse('An error while decoding token', Response::HTTP_BAD_REQUEST);
+            return $this->errorResponse('An error while decoding token', Response::HTTP_UNAUTHORIZED);
         }
 
         $user = User::find($credentials->sub);

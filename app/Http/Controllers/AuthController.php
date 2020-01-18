@@ -89,10 +89,7 @@ class AuthController extends Controller
         if (Hash::check($request->input('password'), $user->password))
         {
             $tokens = JsonWebToken::generateJWTTokensForUser($user);
-
-            return $this->successResponseWithData([
-                $tokens
-            ], Response::HTTP_OK);
+            return $this->successResponseWithData($tokens);
         }
 
         return $this->errorResponse(Lang::get('info.email_password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -105,7 +102,6 @@ class AuthController extends Controller
     public function refreshToken(Request $request)
     {
         $token = $request->token;
-
         if (!$token)
         {
             return $this->errorResponse(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
@@ -114,7 +110,7 @@ class AuthController extends Controller
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
             return $this->errorResponse(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
-        } catch(Exception $e) {
+        } catch(\Exception $e) {
             return $this->errorResponse('An error while decoding token.', Response::HTTP_UNAUTHORIZED);
         }
 
