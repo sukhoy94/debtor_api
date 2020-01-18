@@ -81,20 +81,15 @@ class AuthController extends Controller
     {
         $user = $this->userRepository->getByEmail($request->input('email'));
 
-        if (!$user) {
+        if (!$user)
+        {
             return $this->errorResponse(Lang::get('info.email_does_not_exist'), Response::HTTP_CONFLICT);
         }
 
-        if (!$user->hasVerifiedEmail()) {
-            return $this->errorResponse(Lang::get('info.email_not_confirmed_yet'), Response::HTTP_CONFLICT);
-        }
-
-        if (Hash::check($request->input('password'), $user->password)) {
-            $tokens = $this->generateJWTTokensForUser($user);
-            return response()->json([ // TODO: use apiResponser
-                'access_token' => $tokens['access_token'],
-                'refresh_token' => $tokens['refresh_token'],
-            ], Response::HTTP_OK);
+        if (Hash::check($request->input('password'), $user->password))
+        {
+            $tokens = JsonWebToken::generateJWTTokensForUser($user);
+            return $this->successResponseWithData($tokens);
         }
 
         return $this->errorResponse(Lang::get('info.email_password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
@@ -107,45 +102,34 @@ class AuthController extends Controller
     public function refreshToken(Request $request)
     {
         $token = $request->token;
-
-        if(!$token) {
+        if (!$token)
+        {
             return $this->errorResponse(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
         }
         try {
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
             return $this->errorResponse(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
-        } catch(Exception $e) { // TODO: use apiResponser
-            return response()->json([
-                'error' => 'An error while decoding token.' // TODO: use Lang instead
-            ], Response::HTTP_UNAUTHORIZED);
+        } catch(\Exception $e) {
+            return $this->errorResponse('An error while decoding token.', Response::HTTP_UNAUTHORIZED);
         }
 
 
-        if ($credentials->iss !== JsonWebToken::REFRESH_TOKEN_ISS) {
-            return response()->json([ // TODO: use apiResponser
-                'error' => 'An error while decoding token.' // TODO: use Lang instead
-            ], Response::HTTP_UNAUTHORIZED);
+        if ($credentials->iss !== JsonWebToken::REFRESH_TOKEN_ISS)
+        {
+            return $this->errorResponse('An error while decoding token.', Response::HTTP_UNAUTHORIZED);
         }
 
         $user = User::find($credentials->sub);
 
-        if ($user) {
-            $tokens = $this->generateJWTTokensForUser($user);
-            return response()->json([ // TODO: use apiResponser
-                'access_token' => $tokens['access_token'],
-                'refresh_token' => $tokens['refresh_token'],
-            ]);
+        if ($user)
+        {
+            $tokens = JsonWebToken::generateJWTTokensForUser($user);
+            return $this->successResponseWithData($tokens);
         }
-        else {
-            return response()->json([ // TODO: use apiResponser
-                'error' => 'Invalid token'
-            ], Response::HTTP_UNAUTHORIZED);
+        else
+        {
+            return $this->errorResponse('Invalid token', Response::HTTP_UNAUTHORIZED);
         }
-    }
-
-    public function registerUser()
-    {
-
     }
 }
