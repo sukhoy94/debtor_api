@@ -42,15 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public static function generateEmailToken($userEmail) {
+    public static function generateEmailToken($userEmail)
+    {
         return Str::random(32).md5($userEmail);
     }
 
-    public function setPasswordAttribute($password) {
+    public function setPasswordAttribute($password)
+    {
         $this->attributes['password'] = Hash::make($password);
     }
 
-    public static function boot() {
+    public static function boot()
+    {
         parent::boot();
 
         static::creating(function($item) {
