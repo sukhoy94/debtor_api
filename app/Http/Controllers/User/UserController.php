@@ -29,7 +29,8 @@ class UserController extends Controller
      * @param UserRepositoryInterface $repository
      * @param EmailService $emailService
      */
-    public function __construct(UserRepositoryInterface $repository, EmailService $emailService) {
+    public function __construct(UserRepositoryInterface $repository, EmailService $emailService)
+    {
         $this->userRepository = $repository;
         $this->emailService = $emailService;
     }
@@ -38,8 +39,8 @@ class UserController extends Controller
      * @param UserRegisterRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(UserRegisterRequest $request) {
-
+    public function store(UserRegisterRequest $request)
+    {
         $this->userRepository->create([
             'email' => $request->email,
             'password' => $request->password,
@@ -60,7 +61,8 @@ class UserController extends Controller
      * @param string $verificationToken
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function verifyUser($token) {
+    public function verifyUser($token)
+    {
         $user = $this->userRepository->getByVerificationToken($token);
         $user->markEmailAsVerified();
 
@@ -71,7 +73,8 @@ class UserController extends Controller
      * @param CreateActivationLinkRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function createActivationLink(CreateActivationLinkRequest $request) {
+    public function createActivationLink(CreateActivationLinkRequest $request)
+    {
         $user = $this->userRepository->getByEmail($request->email);
 
         if ($user->hasVerifiedEmail()) {
@@ -85,7 +88,8 @@ class UserController extends Controller
         return $this->successResponse(Lang::get('info.verification_link_sended'));
     }
 
-    public function getAuthenticatedUser(Request $request) {
+    public function getAuthenticatedUser(Request $request)
+    {
 
     }
 }
