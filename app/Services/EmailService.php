@@ -20,15 +20,19 @@ class EmailService
         $this->mg = Mailgun::create(config('mailgun.secret'));
     }
 
-    public function sendVerificationEmail(User $user) {
-        if (!$user) {
+    public function sendVerificationEmail(User $user)
+    {
+        if (!$user)
+        {
             return;
         }
 
-        if (App::environment('local')) {
+        if (App::environment('local'))
+        {
             $to = config('mail.test.to');
         }
-        else {
+        else
+        {
             $to = $user->email;
         }
 
