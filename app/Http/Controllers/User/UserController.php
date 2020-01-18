@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Requests\User\CreateActivationLinkRequest;
 use App\Http\Requests\User\UserRegisterRequest;
+use App\Models\JsonWebToken;
 use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\EmailService;
@@ -50,11 +51,17 @@ class UserController extends Controller
         try {
             $user = $this->userRepository->getByEmail($request->email);
         } catch (ModelNotFoundException $exception) {
-            return $this->errorRespose(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
+            return $this->errorResponse(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
         }
 
         $this->emailService->sendVerificationEmail($user);
-        return $this->successResponse(Lang::get('info.user_created_successfully'), Response::HTTP_CREATED);
+        $tokens = JsonWebToken::generateJWTTokensForUser($user);
+
+        return  $this->successResponseWithData(
+            Lang::get('info.user_created_successfully'),
+            $tokens,
+            Response::HTTP_CREATED
+        );
     }
 
     /**
@@ -78,7 +85,7 @@ class UserController extends Controller
         $user = $this->userRepository->getByEmail($request->email);
 
         if ($user->hasVerifiedEmail()) {
-            return $this->errorRespose(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);
+            return $this->errorResponse(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);
         }
 
         $user->email_verification_token = User::generateEmailToken($user->email);

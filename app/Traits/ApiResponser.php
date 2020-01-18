@@ -4,36 +4,46 @@
 namespace App\Traits;
 
 
-use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\HttpFoundation\Response;
 
 trait ApiResponser
 {
     /**
      * @param string $message
-     * @param int $code
+     * @param int $http_code
      * @return \Illuminate\Http\JsonResponse
      */
-    public function successResponse($message = '', $code = Response::HTTP_OK)
+    public function successResponse($message = '', $http_code = Response::HTTP_OK)
     {
         return response()->json([
             'message' => $message,
-            'code' => $code,
-            'success' => true,
-        ], $code);
+        ], $http_code)->setStatusCode($http_code);
     }
 
     /**
      * @param string $message
-     * @param int $code
+     * @param array $data
+     * @param int $http_code
      * @return \Illuminate\Http\JsonResponse
      */
-    public function errorRespose($message = '', $code = Response::HTTP_BAD_REQUEST)
+    public function successResponseWithData($message = '', $data = [], $http_code = Response::HTTP_OK)
     {
         return response()->json([
             'message' => $message,
-            'code' => $code,
-            'success' => false,
-        ], $code);
+            'data' => $data,
+        ])->setStatusCode($http_code);
+    }
+
+
+    /**
+     * @param string $message
+     * @param int $http_code
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function errorResponse($message = '', $http_code = Response::HTTP_BAD_REQUEST)
+    {
+        return response()->json([
+            'message' => $message,
+        ], $http_code)->setStatusCode($http_code);
     }
 }

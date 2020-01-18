@@ -82,11 +82,11 @@ class AuthController extends Controller
         $user = $this->userRepository->getByEmail($request->input('email'));
 
         if (!$user) {
-            return $this->errorRespose(Lang::get('info.email_does_not_exist'), Response::HTTP_CONFLICT);
+            return $this->errorResponse(Lang::get('info.email_does_not_exist'), Response::HTTP_CONFLICT);
         }
 
         if (!$user->hasVerifiedEmail()) {
-            return $this->errorRespose(Lang::get('info.email_not_confirmed_yet'), Response::HTTP_CONFLICT);
+            return $this->errorResponse(Lang::get('info.email_not_confirmed_yet'), Response::HTTP_CONFLICT);
         }
 
         if (Hash::check($request->input('password'), $user->password)) {
@@ -97,7 +97,7 @@ class AuthController extends Controller
             ], Response::HTTP_OK);
         }
 
-        return $this->errorRespose(Lang::get('info.email_password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
+        return $this->errorResponse(Lang::get('info.email_password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /**
@@ -109,12 +109,12 @@ class AuthController extends Controller
         $token = $request->token;
 
         if(!$token) {
-            return $this->errorRespose(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponse(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
         }
         try {
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
-            return $this->errorRespose(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponse(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
         } catch(Exception $e) { // TODO: use apiResponser
             return response()->json([
                 'error' => 'An error while decoding token.' // TODO: use Lang instead
