@@ -4,6 +4,7 @@
 namespace App\Services;
 
 
+use App\Jobs\SendVerificationEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Mailgun\Mailgun;
@@ -20,24 +21,16 @@ class EmailService
         $this->mg = Mailgun::create(config('mailgun.secret'));
     }
 
-    public function sendVerificationEmail(User $user) {
-        if (!$user) {
-            return;
+    public function sendVerificationEmail(User $user)
+    {
+        if (App::environment('local'))
+        {
+            SendVerificationEmail::dispatchNow($user);
         }
-
-        if (App::environment('local')) {
-            $to = config('mail.test.to');
+        else
+        {
+            SendVerificationEmail::dispatch($user);
         }
-        else {
-            $to = $user->email;
-        }
-
-        $this->mg->messages()->send(config('mailgun.domain'), [
-            'from'    => $this->from['verification'],
-            'to'      => $to,
-            'subject' => 'Confirm your account please...',
-            'text'    => 'Confirmation link: '.route('user.verify', ['token' => $user->email_verification_token]).'. If you didn\'t register in our system, please ignore this email!',
-        ]);
     }
 
     public function sentTestEmail($text = 'Sample text', $subject = 'Test subject') {

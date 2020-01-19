@@ -60,4 +60,12 @@ class User extends Authenticatable
             $item->attributes['email_verification_token'] = self::generateEmailToken($item->attributes['email']);
         });
     }
+
+    /**
+     * @return string
+     */
+    public function getEmailVerificationToken()
+    {
+        return $this->email_verification_token;
+    }
 }
