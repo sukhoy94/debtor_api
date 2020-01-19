@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Debtor'),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,6 +124,13 @@ return [
     'cipher' => 'AES-256-CBC',
 
     /*
+     /--------------------------------------------------------------------------
+     / Url to Web Version of Apllication
+     /--------------------------------------------------------------------------
+     */
+    'web_base_url' => env('APP_WEB_URL','https://debtor.com'),
+
+    /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
@@ -133,6 +140,8 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+
+
 
     'providers' => [
 

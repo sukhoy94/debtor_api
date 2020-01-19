@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Mail\VerificationEmail;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -16,16 +17,18 @@ class SendVerificationEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     /**
-     * @var Mailgun
+     * @var User
      */
+    protected $user;
 
     /**
      * Create a new job instance.
      *
-     * @return void
+     * @param User $user
      */
-    public function __construct()
+    public function __construct(User $user)
     {
+        $this->user = $user;
     }
 
     /**
@@ -35,9 +38,9 @@ class SendVerificationEmail implements ShouldQueue
      */
     public function handle()
     {
-        // TODO: pass user instance and fetch user email from there
-        $email = new VerificationEmail();
-        $to = config('mail.test.to');
+        $email = new VerificationEmail($this->user);
+        $to = App::environment('local') ?  config('mail.test.to') : $this->user->email;
+
         Mail::to($to)->send($email);
     }
 }

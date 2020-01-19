@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -14,14 +15,17 @@ class VerificationEmail extends Mailable
     const FROM = 'debtor-verification@example.com';
     const NAME = 'Debtor Verification System';
 
+    public $user;
+
+
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param User $user
      */
-    public function __construct()
+    public function __construct(User $user)
     {
-        //
+        $this->user = $user;
     }
 
     /**
@@ -32,7 +36,10 @@ class VerificationEmail extends Mailable
     public function build()
     {
         return $this->from(self::FROM, self::NAME)
-            ->subject('Test Queued Email')
-            ->view('mails.users.verification');
+            ->subject('Confirm registration please!')
+            ->view('mails.users.verification')
+            ->with([
+                'confirmation_link' => config('app.web_base_url').'/auth/verify?t='.$this->user->getEmailVerificationToken(),
+            ]);
     }
 }

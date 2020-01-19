@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\EmailService;
 use App\Transformers\UserTransformer;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,7 @@ class UserController extends Controller
         } catch (ModelNotFoundException $exception) {
             return $this->errorResponse(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
         }
-        SendVerificationEmail::dispatch();
+        $this->emailService->sendVerificationEmail($user);
         $tokens = JsonWebToken::generateJWTTokensForUser($user);
 
         return  $this->successResponseWithData(
