@@ -16,4 +16,3 @@ Route::get('/', function () {
 });
 
 Route::get('verify-user/{token?}', 'User\UserController@verifyUser')->name('user.verify');
-Route::get('sendemail', 'EmailQueueController@run');
