@@ -40,6 +40,7 @@ class VerificationEmail extends Mailable
             ->view('mails.users.verification')
             ->with([
                 'confirmation_link' => config('app.web_base_url').'/auth/verify?t='.$this->user->getEmailVerificationToken(),
+                'app_name' => config('app.name'),
             ]);
     }
 }
