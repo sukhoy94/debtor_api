@@ -11,6 +11,7 @@ Route::prefix('auth')->group(function () {
     Route::post('refresh', 'AuthController@refreshToken');
     Route::post('registration', 'User\UserController@store');
     Route::post('activationlink', 'User\UserController@createActivationLink');
+    Route::post('password/forget', 'User\ForgetPasswordController@createForgetPasswordLink');
 });
 
 Route::group(['middleware' => ['jwt.verify']], function() {
