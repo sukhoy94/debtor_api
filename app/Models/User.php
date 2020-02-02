@@ -68,4 +68,9 @@ class User extends Authenticatable
     {
         return $this->email_verification_token;
     }
+
+    public function resetPasswords()
+    {
+        return $this->hasOne('App\Models\ResetPassword');
+    }
 }
