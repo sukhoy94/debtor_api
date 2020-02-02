@@ -33,15 +33,6 @@ class EmailService
         }
     }
 
-    public function sentTestEmail($text = 'Sample text', $subject = 'Test subject') {
-        $this->mg->messages()->send(config('mailgun.domain'), [
-            'from'    => config('mail.test.from'),
-            'to'      => config('mail.test.to'),
-            'subject' => $subject,
-            'text'    => $text,
-        ]);
-    }
-
     public function sendErrorReportEmail($html, $subject)
     {
         $this->mg->messages()->send(config('mailgun.domain'), [

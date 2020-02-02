@@ -10,7 +10,10 @@
       <user-name>homestead</user-name>
       <schema-mapping>
         <introspection-scope>
+          <node kind="schema" negative="1" />
+          <node kind="schema" qname="#mysql50#lost+found" />
           <node kind="schema" qname="@" />
+          <node kind="schema" qname="information_schema" />
         </introspection-scope>
       </schema-mapping>
     </data-source>
