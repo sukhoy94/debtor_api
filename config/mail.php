@@ -140,6 +140,14 @@ return [
     'test' => [
         'to' => env('TEST_EMAIL_ADDRESS'),
         'from' => env('TEST_EMAIL_FROM_ADDRESS'),
-    ]
+    ],
 
+    /*
+     * email for reporting errors
+     *
+     */
+    'errors' => [
+        'to' => env('ERROR_REPORTING_ADDRESS'),
+        'from' => env('TEST_EMAIL_FROM_ADDRESS'),
+    ],
 ];
