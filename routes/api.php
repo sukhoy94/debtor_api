@@ -16,3 +16,9 @@ Route::prefix('auth')->group(function () {
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/users/me', 'User\UserController@getAuthenticatedUser');
 });
+
+
+Route::prefix('debug')->group(function () {
+    Route::post('email', 'TestEmailController@send');
+});
+

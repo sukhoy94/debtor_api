@@ -8,6 +8,7 @@ use App\Jobs\SendVerificationEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\App;
 use Mailgun\Mailgun;
+use Symfony\Component\HttpFoundation\Response;
 
 class EmailService
 {
@@ -34,19 +35,26 @@ class EmailService
     }
 
     public function sentTestEmail($text = 'Sample text', $subject = 'Test subject') {
-        $this->mg->messages()->send(config('mailgun.domain'), [
-            'from'    => config('mail.test.from'),
-            'to'      => config('mail.test.to'),
-            'subject' => $subject,
-            'text'    => $text,
-        ]);
+        if (App::environment('local'))
+        {
+            $this->mg->messages()->send(config('mailgun.domain'), [
+                'from'    => config('mail.test.from'),
+                'to'      => config('mail.test.to'),
+                'subject' => $subject,
+                'text'    => $text,
+            ]);
+        }
+        else
+        {
+            throw new \BadFunctionCallException('Send test email on production', Response::HTTP_NOT_IMPLEMENTED);
+        }
     }
 
     public function sendErrorReportEmail($html, $subject)
     {
         $this->mg->messages()->send(config('mailgun.domain'), [
             'from'    => config('mail.test.from'),
-            'to'      => 'report_error@sukhoi.hekko24.pl',
+            'to'      => config('mail.errors.to'),
             'subject' => $subject,
             'html'    => $html,
         ]);
