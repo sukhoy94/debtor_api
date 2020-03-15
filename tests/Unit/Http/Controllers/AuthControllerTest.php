@@ -44,8 +44,6 @@ class AuthControllerTest extends TestCase
      */
     public function wrong_email_returns_422_status()
     {
-
-
         $response = $this->post('/api/auth/login', [
             'email' => 'wrong@wrong.wrong',
             'password' => 12345678,
