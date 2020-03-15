@@ -79,11 +79,10 @@ class AuthController extends Controller
      */
     public function authenticate(UserAuthenticateRequest $request)
     {
-        $user = $this->userRepository->getByEmail($request->input('email'));
-
-        if (!$user)
-        {
-            return $this->errorResponse(Lang::get('info.email_does_not_exist'), Response::HTTP_CONFLICT);
+        try {
+            $user = $this->userRepository->getByEmail($request->input('email'));
+        } catch (\Exception $exception) {
+            return $this->errorResponse(Lang::get('info.email_does_not_exist'), Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         if (Hash::check($request->input('password'), $user->password))
@@ -92,7 +91,7 @@ class AuthController extends Controller
             return $this->successResponseWithData($tokens);
         }
 
-        return $this->errorResponse(Lang::get('info.email_password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
+        return $this->errorResponse(Lang::get('info.password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /**
