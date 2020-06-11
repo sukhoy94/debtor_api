@@ -46,14 +46,6 @@ class UserController extends Controller
      */
     public function store(UserRegisterRequest $request)
     {
-
-        $res = User::create([
-            'name' => 'test',
-            'email' => 'test@test.test',
-            'password' => '12345678'
-        ]);
-        var_dump($res); exit;
-        
         $this->userRepository->create([
             'email' => $request->email,
             'password' => $request->password,
