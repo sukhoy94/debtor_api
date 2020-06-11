@@ -15,6 +15,7 @@ Route::prefix('auth')->group(function () {
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/users/me', 'User\UserController@getAuthenticatedUser');
+    Route::post('/users/filters', 'User\SearchUserController@search');
 });
 
 

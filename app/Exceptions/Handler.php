@@ -6,9 +6,8 @@ use App\Mail\ExceptionOccured;
 use App\Services\EmailService;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Support\Facades\Mail;
-use Symfony\Component\Debug\Exception\FlattenException;
-use Symfony\Component\Debug\ExceptionHandler as SymfonyExceptionHandler;
+use Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer;
+use Symfony\Component\ErrorHandler\Exception\FlattenException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -60,15 +59,16 @@ class Handler extends ExceptionHandler
         return parent::render($request, $exception);
     }
 
-    public function sendEmail(Exception $exception)
+    public function sendEmail(Throwable $exception)
     {
         $emailService = new EmailService();
+
         try {
-            $e = FlattenException::create($exception);
-            $handler = new SymfonyExceptionHandler();
-            $html = $handler->getHtml($e);
-            $subject = 'Error '.$e->getStatusCode().' '.$exception->getMessage();
-            $emailService->sendErrorReportEmail($html, $subject);
+            $fe = FlattenException::createFromThrowable($exception);
+            $handler = new HtmlErrorRenderer(true);
+            $content = $handler->getBody($fe);
+            $subject = 'Error ' . $fe->getStatusCode() . ' ' . $exception->getMessage();   
+            $emailService->sendErrorReportEmail($content, $subject);
         } catch (Exception $ex) {
         }
     }

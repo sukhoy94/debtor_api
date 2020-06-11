@@ -105,6 +105,7 @@ class AuthController extends Controller
         {
             return $this->errorResponse(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
         }
+        dd($token);
         try {
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
@@ -112,7 +113,6 @@ class AuthController extends Controller
         } catch(\Exception $e) {
             return $this->errorResponse('An error while decoding token.', Response::HTTP_UNAUTHORIZED);
         }
-
 
         if ($credentials->iss !== JsonWebToken::REFRESH_TOKEN_ISS)
         {
