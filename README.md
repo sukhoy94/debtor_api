@@ -1,6 +1,8 @@
 # debtor_api
 api for debtor application
 
+about: https://github.com/sukhoy94/debtor_api/wiki
+
 INSTRUCTION FOR LOCAL INSTALLATION
 
 1. install composer https://getcomposer.org/download/
