@@ -9,11 +9,13 @@ use App\ValueObjects\UserFilters;
 
 class SearchUserService
 {
+    private $limit = 15;
+    
     public function searchUsersByFilters(UserFilters $userFilters)
     {
         $users = User::where([
             ['name', 'like', '%' . $userFilters->getName() . '%']
-        ])->paginate(15);
+        ])->paginate($this->limit);
 
         return $users;
     }
