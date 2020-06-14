@@ -1,0 +1,32 @@
+POST http://debtor_api.test/api/auth/login?email=andrii.sukhoi@test.com&password=12345678
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-18T024341.200.json
+
+###
+
+POST http://debtor_api.test/api/auth/login?email=andrii.sukhoi@test.com&password=12345678
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-18T024323.200.json
+
+###
+
+POST http://debtor_api.test/api/auth/login/api/auth/login
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-18T024224-1.404.html
+
+###
+
+POST http://debtor_api.test/api/auth/login/api/auth/login
+Accept: */*
+Cache-Control: no-cache
+
+<> 2020-01-18T024224.404.html
+
+###
+
