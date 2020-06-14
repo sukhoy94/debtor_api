@@ -28,6 +28,6 @@ class SearchUserController extends Controller
         $users = $this->searchUserService->searchUsersByFilters($userFilters);
         
         //TODO: Create transform layer for user
-        return $this->successResponseWithData($users);        
+        return $this->successResponse($users);        
     }
 }

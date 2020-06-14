@@ -28,27 +28,27 @@ class JwtMiddleware
 
         if (!$token)
         {
-            return $this->errorResponse('Authorization token not provided', Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponseWithMessage('Authorization token not provided', Response::HTTP_UNAUTHORIZED);
         }
 
         try {
             $credentials = JWT::decode($token, config('api.jwt.secret'), ['HS256']);
         } catch(ExpiredException $e) {
-            return $this->errorResponse('Provided token is expired', Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponseWithMessage('Provided token is expired', Response::HTTP_UNAUTHORIZED);
         } catch(\Exception $e) {
-            return $this->errorResponse('An error while decoding token', Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponseWithMessage('An error while decoding token', Response::HTTP_UNAUTHORIZED);
         }
 
         if ($credentials->iss !== JsonWebToken::ACCESS_TOKEN_ISS)
         {
-            return $this->errorResponse('An error while decoding token', Response::HTTP_UNAUTHORIZED);
+            return $this->errorResponseWithMessage('An error while decoding token', Response::HTTP_UNAUTHORIZED);
         }
 
         $user = User::find($credentials->sub);
 
         if (!$user)
         {
-            return $this->errorResponse('No such user', Response::HTTP_NOT_FOUND);
+            return $this->errorResponseWithMessage('No such user', Response::HTTP_NOT_FOUND);
         }
 
         $request->currentUser = $user;

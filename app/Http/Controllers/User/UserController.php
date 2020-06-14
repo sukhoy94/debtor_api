@@ -55,7 +55,7 @@ class UserController extends Controller
         try {
             $user = $this->userRepository->getByEmail($request->email);
         } catch (ModelNotFoundException $exception) {
-            return $this->errorResponse(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
+            return $this->errorResponseWithMessage(Lang::get('info.default_error'), Response::HTTP_NOT_FOUND);
         }
         $this->emailService->sendVerificationEmail($user);
         $tokens = JsonWebToken::generateJWTTokensForUser($user);
@@ -87,14 +87,14 @@ class UserController extends Controller
         $user = $this->userRepository->getByEmail($request->email);
 
         if ($user->hasVerifiedEmail()) {
-            return $this->errorResponse(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);
+            return $this->errorResponseWithMessage(Lang::get('info.email_already_verified'), Response::HTTP_CONFLICT);
         }
 
         $user->email_verification_token = User::generateEmailToken($user->email);
         $user->save();
 
         $this->emailService->sendVerificationEmail($user);
-        return $this->successResponse(Lang::get('info.verification_link_sended'));
+        return $this->successResponseWithMessage(Lang::get('info.verification_link_sended'));
     }
 
     public function getAuthenticatedUser(Request $request)
