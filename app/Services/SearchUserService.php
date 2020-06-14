@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Models\User;
+use App\Transformers\UserTransformer;
 use App\ValueObjects\UserFilters;
 
 class SearchUserService
@@ -13,10 +14,14 @@ class SearchUserService
     
     public function searchUsersByFilters(UserFilters $userFilters)
     {
-        $users = User::where([
+        $usersPaginated = User::where([
             ['name', 'like', '%' . $userFilters->getName() . '%']
         ])->paginate($this->limit);
-
-        return $users;
+        
+        
+        $usersTransformed = collect($usersPaginated->getCollection()->transformWith(new UserTransformer()));
+        $usersPaginated->setCollection(collect($usersTransformed->get('data')));
+        
+        return $usersPaginated;
     }
 }

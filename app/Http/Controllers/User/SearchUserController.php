@@ -7,8 +7,10 @@ use App\Http\Requests\User\SearchUserRequest;
 use App\Models\User;
 use App\Services\SearchUserService;
 use App\Traits\ApiResponser;
+use App\Transformers\UserTransformer;
 use App\ValueObjects\UserFilters;
 
+use League\Fractal;
 class SearchUserController extends Controller
 {
     use ApiResponser;
@@ -22,12 +24,9 @@ class SearchUserController extends Controller
     
     public function search(SearchUserRequest $request)
     {
-        $name = $request->name; 
-        $userFilters = new UserFilters(['name' => $name,]);      
-        
+        $userFilters = new UserFilters($request->all());      
         $users = $this->searchUserService->searchUsersByFilters($userFilters);
-        
-        //TODO: Create transform layer for user
-        return $this->successResponse($users);        
+    
+        return $this->successResponse($users);
     }
 }
