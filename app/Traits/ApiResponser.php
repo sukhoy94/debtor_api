@@ -10,38 +10,48 @@ trait ApiResponser
 {
     /**
      * @param string $message
-     * @param int $http_code
+     * @param int $httpCode
      * @return \Illuminate\Http\JsonResponse
      */
-    public function successResponse($message = '', $http_code = Response::HTTP_OK)
+    public function successResponseWithMessage($message = '', $httpCode = Response::HTTP_OK): \Illuminate\Http\JsonResponse
     {
         return response()->json([
             'message' => $message,
-        ], $http_code)->setStatusCode($http_code);
+        ], $httpCode)->setStatusCode($httpCode);
     }
 
     /**
      * @param array $data
-     * @param int $http_code
+     * @param int $httpCode
      * @return \Illuminate\Http\JsonResponse
      */
-    public function successResponseWithData($data = [], $http_code = Response::HTTP_OK)
+    public function successResponseWithData($data = [], $httpCode = Response::HTTP_OK): \Illuminate\Http\JsonResponse
     {
         return response()->json([
             'data' => $data,
-        ])->setStatusCode($http_code);
+        ])->setStatusCode($httpCode);
     }
 
 
     /**
      * @param string $message
-     * @param int $http_code
+     * @param int $httpCode
      * @return \Illuminate\Http\JsonResponse
      */
-    public function errorResponse($message = '', $http_code = Response::HTTP_BAD_REQUEST)
+    public function errorResponseWithMessage($message = '', $httpCode = Response::HTTP_BAD_REQUEST): \Illuminate\Http\JsonResponse
     {
         return response()->json([
             'message' => $message,
-        ], $http_code)->setStatusCode($http_code);
+        ], $httpCode)->setStatusCode($httpCode);
+    }
+    
+    /**
+     * @param $data
+     * @param int $httpCode
+     * @return \Illuminate\Http\JsonResponse|object
+     */
+    public function successResponse($data, $httpCode = Response::HTTP_OK): \Illuminate\Http\JsonResponse
+    {
+        return response()->json($data, $httpCode)->setStatusCode($httpCode);  
     }
 }
