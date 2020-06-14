@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'smtp'),
+    'driver' => env('MAIL_DRIVER', 'mailgun'),
 
     /*
     |--------------------------------------------------------------------------
@@ -133,4 +133,21 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+    /*
+     * dev email address
+     * */
+
+    'test' => [
+        'to' => env('TEST_EMAIL_ADDRESS'),
+        'from' => env('TEST_EMAIL_FROM_ADDRESS'),
+    ],
+
+    /*
+     * email for reporting errors
+     *
+     */
+    'errors' => [
+        'to' => env('ERROR_REPORTING_ADDRESS'),
+        'from' => env('TEST_EMAIL_FROM_ADDRESS'),
+    ],
 ];

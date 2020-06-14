@@ -129,9 +129,7 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'no_user_with_such_email' => 'This email is not registered in our system yet',
     ],
 
     /*

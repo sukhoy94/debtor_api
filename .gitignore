@@ -11,5 +11,12 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .vagrant/
+./idea/debtor_api.iml
+./idea/workspace.xml
+./idea/php.xml
+./idea/vcs.xml
 .idea/php.xml
+.idea/vcs.xml
 .idea/workspace.xml
+.idea
+.idea/inspectionProfiles/Project_Default.xml
