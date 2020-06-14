@@ -1,30 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="" />
+    <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ComposerSettings">
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1592136716" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="DEB-API-14" />
+                    <option name="lastUsedInstant" value="1592136715" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$" />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
     </option>
-    <expand />
-    <select />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -142,26 +157,30 @@
   </component>
   <component name="ProjectId" id="1QV5SF63plCu73onDjdhAdKmmPi" />
   <component name="PropertiesComponent">
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="248" y="162" key="MergeDialog" timestamp="1592136741751">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="248" y="162" key="MergeDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592136741751" />
+    <state x="918" y="501" key="MultipleFileMergeDialog" timestamp="1592136741757">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="918" y="501" key="MultipleFileMergeDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592136741757" />
+    <state x="936" y="393" width="672" height="676" key="search.everywhere.popup" timestamp="1592137633068">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="936" y="393" width="672" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592137633068" />
   </component>
 </project>

@@ -44,7 +44,7 @@ class AuthController extends Controller
     }
 
     /**
-     * Create a pair of 2 tokens for user: access and refresz token
+     * Create a pair of 2 tokens for user: access and refresh token
      *
      * @param User $user
      * @return array
@@ -101,11 +101,12 @@ class AuthController extends Controller
     public function refreshToken(Request $request)
     {
         $token = $request->token;
+        
         if (!$token)
         {
             return $this->errorResponseWithMessage(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
         }
-        dd($token);
+
         try {
             $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
         } catch(ExpiredException $e) {
