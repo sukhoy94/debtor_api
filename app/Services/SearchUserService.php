@@ -13,7 +13,7 @@ class SearchUserService
     {
         $users = User::where([
             ['name', 'like', '%' . $userFilters->getName() . '%']
-        ])->take(5)->get();
+        ])->paginate(15);
 
         return $users;
     }
