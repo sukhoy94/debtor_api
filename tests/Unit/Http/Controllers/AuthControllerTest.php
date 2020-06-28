@@ -19,8 +19,9 @@ class AuthControllerTest extends TestCase
         
         $response = $this->post('/api/auth/login', [
             'email' => $user->email,
-            'password' => 12345678,
+            'password' => config('api.dev_password'),
         ]);
+        
 
         $response->assertStatus(Response::HTTP_OK);
     }

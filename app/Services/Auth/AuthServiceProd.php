@@ -4,7 +4,7 @@
 namespace App\Services\Auth;
 
 
-use App\Auth\Services\AuthService;
+use App\Services\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthServiceProd extends AuthService

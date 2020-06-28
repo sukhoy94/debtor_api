@@ -56,7 +56,6 @@ class AuthController extends Controller
     public function authenticate(UserAuthenticateRequest $request)
     {
         $authService = AuthServiceFactory::create();
-        
         try {
             $tokens = $authService->authenticate($request->email, $request->password);    
             return $this->successResponseWithData($tokens);
