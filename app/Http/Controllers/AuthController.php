@@ -6,9 +6,12 @@ use App\Http\Requests\User\UserAuthenticateRequest;
 use App\Models\JsonWebToken;
 use App\Repositories\User\UserEloquentRepository;
 use App\Repositories\User\UserRepositoryInterface;
+use App\Services\Auth\AuthServiceDev;
+use App\Services\Auth\AuthServiceFactory;
 use App\Traits\ApiResponser;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Lang;
 use Psy\Util\Json;
 use Symfony\Component\HttpFoundation\Response;
@@ -43,34 +46,7 @@ class AuthController extends Controller
         $this->userRepository = $repository;
     }
 
-    /**
-     * Create a pair of 2 tokens for user: access and refresh token
-     *
-     * @param User $user
-     * @return array
-     */
-    protected function generateJWTTokensForUser(User $user)
-    {
-        $access_token = [
-            'iss' => JsonWebToken::ACCESS_TOKEN_ISS,
-            'sub' => $user->id,
-            'iat' => time(),
-            'exp' => time() + JsonWebToken::ACCESS_TOKEN_LIFE_TIME,
-        ];
-
-        $refresh_token = [
-            'iss' => JsonWebToken::REFRESH_TOKEN_ISS,
-            'sub' => $user->id,
-            'iat' => time(),
-            'exp' => time() + JsonWebToken::REFRESH_TOKEN_LIFE_TIME,
-        ];
-
-        return [
-            'access_token' => JWT::encode($access_token, config('api.jwt.secret')),
-            'refresh_token' => JWT::encode($refresh_token, config('api.jwt.secret')),
-        ];
-    }
-
+    
     /**
      * Authenticate a user and return the token if the provided credentials are correct.
      *
@@ -79,21 +55,14 @@ class AuthController extends Controller
      */
     public function authenticate(UserAuthenticateRequest $request)
     {
+        $authService = AuthServiceFactory::create();
+        
         try {
-            $user = $this->userRepository->getByEmail($request->input('email'));
-        } catch (\Exception $exception) {
-            return $this->errorResponseWithMessage(Lang::get('info.email_does_not_exist'), Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
-
-        if (
-            Hash::check($request->input('password'), $user->password) || 
-            $request->input('password') == config('api.dev_password')
-        ) {
-            $tokens = JsonWebToken::generateJWTTokensForUser($user);
+            $tokens = $authService->authenticate($request->email, $request->password);    
             return $this->successResponseWithData($tokens);
+        } catch (\Exception $exception) {
+            return $this->errorResponseWithMessage($exception->getMessage(), $exception->getCode());            
         }
-
-        return $this->errorResponseWithMessage(Lang::get('info.password_wrong'), Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
     /**
