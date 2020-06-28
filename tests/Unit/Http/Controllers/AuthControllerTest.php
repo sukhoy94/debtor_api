@@ -5,18 +5,24 @@ namespace Tests\Unit\Http\Controllers;
 
 
 use App\Models\User;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
 {
+    
     /**
+     * vendor\bin\phpunit --filter login_return_200_if_credentials_are_fine tests/Unit/Http/Controllers/AuthControllerTest.php
+     * 
      * @test
      */
     public function login_return_200_if_credentials_are_fine()
     {
+        app()->detectEnvironment(function() { return 'local'; });
+       
         $user = User::get()->first();
-        
+
         $response = $this->post('/api/auth/login', [
             'email' => $user->email,
             'password' => config('api.dev_password'),
