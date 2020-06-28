@@ -21,5 +21,6 @@ Route::group(['middleware' => ['jwt.verify']], function() {
 
 Route::prefix('debug')->group(function () {
     Route::post('email', 'TestEmailController@send');
+    Route::get('main', 'DebugController');
 });
 

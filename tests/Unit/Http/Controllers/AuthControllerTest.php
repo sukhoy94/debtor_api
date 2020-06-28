@@ -15,8 +15,10 @@ class AuthControllerTest extends TestCase
      */
     public function login_return_200_if_credentials_are_fine()
     {
+        $user = User::get()->first();
+        
         $response = $this->post('/api/auth/login', [
-            'email' => 'andrii@jedai.com',
+            'email' => $user->email,
             'password' => 12345678,
         ]);
 
