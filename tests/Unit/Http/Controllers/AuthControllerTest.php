@@ -33,6 +33,7 @@ class AuthControllerTest extends TestCase
     }
 
     /**
+     * vendor\bin\phpunit --filter success_login_returns_access_and_refresh_tokens_in_data_object tests/Unit/Http/Controllers/AuthControllerTest.php
      * @test
      */
     public function success_login_returns_access_and_refresh_tokens_in_data_object()
@@ -49,6 +50,8 @@ class AuthControllerTest extends TestCase
     }
 
     /**
+     * vendor\bin\phpunit --filter wrong_email_returns_422_status tests/Unit/Http/Controllers/AuthControllerTest.php
+     * 
      * @test
      */
     public function wrong_email_returns_422_status()
@@ -62,6 +65,8 @@ class AuthControllerTest extends TestCase
     }
 
     /**
+     * vendor\bin\phpunit --filter wrong_password_returns_422_status tests/Unit/Http/Controllers/AuthControllerTest.php
+     * 
      * @test
      */
     public function wrong_password_returns_422_status()
