@@ -34,17 +34,17 @@ abstract class AuthService
     }
     
     /**
-     * @param string $emai
+     * @param string $email
      * @return \App\Models\User
      * @throws \Exception
      */
-    public function getUser(string $emai): \App\Models\User
+    public function getUser(string $email): \App\Models\User
     {
         
         $repository = new UserEloquentRepository();
         
         try {
-            $user = $repository->getByEmail($emai);
+            $user = $repository->getByEmail($email);
         } catch (\Exception $exception) {
             throw new \Exception(Lang::get('info.email_does_not_exist'), Response::HTTP_NOT_FOUND);
         }        

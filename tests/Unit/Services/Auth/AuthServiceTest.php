@@ -4,6 +4,7 @@
 namespace Tests\Unit\Services\Auth;
 
 
+use App\Models\User;
 use App\Services\Auth\AuthService;
 use Tests\TestCase;
 
@@ -29,7 +30,12 @@ class AuthServiceTest extends TestCase
      */
     public function get_user_returns_instance_of_user_if_user_exists() 
     {
-//        $this->assertTrue(1==1);
+        $userFromDB = User::get()->first(); 
+        
+        $this->assertInstanceOf(
+            User::class,
+            $this->anonymousClassInstanceFromAuthServiceAbstract->getUser($userFromDB->email)     
+        );
     }
         
 }
