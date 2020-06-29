@@ -10,12 +10,12 @@ use Tests\TestCase;
 
 class AuthServiceTest extends TestCase
 {    
-    protected $anonymousClassInstanceFromAuthServiceAbstract;
+    protected $authService;
     
     
     public function setUp(): void
     {
-        $this->anonymousClassInstanceFromAuthServiceAbstract = new class extends AuthService {    
+        $this->authService = new class extends AuthService {    
             public function isPasswordCorrect(string $passwordFromRequest, string $userPasswordFromDB): bool
             {   
                 return true;
@@ -34,8 +34,20 @@ class AuthServiceTest extends TestCase
         
         $this->assertInstanceOf(
             User::class,
-            $this->anonymousClassInstanceFromAuthServiceAbstract->getUser($userFromDB->email)     
+            $this->authService->getUser($userFromDB->email)     
         );
+    }
+    
+    /**
+     * vendor\bin\phpunit --filter get_user_throws_exception_if_user_instance_not_exists tests/Unit/Services/Auth/AuthServiceTest.php
+     * @test
+     */
+    public function get_user_throws_exception_if_user_instance_not_exists() 
+    {
+        $dummyEmail = 'lol@test123@test.test';        
+        $this->expectException(\Exception::class);
+        
+        $this->authService->getUser($dummyEmail);
     }
         
 }
