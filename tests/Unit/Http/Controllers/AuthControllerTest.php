@@ -5,7 +5,6 @@ namespace Tests\Unit\Http\Controllers;
 
 
 use App\Models\User;
-use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
