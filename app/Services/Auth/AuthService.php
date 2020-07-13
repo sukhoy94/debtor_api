@@ -4,9 +4,17 @@
 namespace App\Services\Auth;
 
 
+use App\Exceptions\Auth\InvalidTokenException;
+use App\Exceptions\Auth\InvalidTokenIssuerException;
+use App\Exceptions\Auth\RefreshTokenNotProvidedException;
+use App\Exceptions\Auth\TokenExpiredException;
+use App\Exceptions\Auth\UserNotFoundForTokenException;
 use App\Models\JsonWebToken;
+use App\Models\User;
 use App\Repositories\User\UserEloquentRepository;
 use App\Traits\ApiResponser;
+use Firebase\JWT\ExpiredException;
+use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Lang;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -50,6 +58,44 @@ abstract class AuthService
         }        
         
         return $user;
+    }
+    
+    
+    /**
+     * @param String $token
+     * @return array
+     *
+     * @throws InvalidTokenException
+     * @throws InvalidTokenIssuerException
+     * @throws RefreshTokenNotProvidedException
+     * @throws TokenExpiredException
+     * @throws UserNotFoundForTokenException
+     */
+    public function refreshToken(String $token): array
+    {    
+        if (!$token) {
+            throw new RefreshTokenNotProvidedException(Lang::get('info.token_not_provided'),Response::HTTP_UNAUTHORIZED);
+        }
+    
+        try {
+            $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
+        } catch (ExpiredException $e) {
+            throw new TokenExpiredException(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
+        } catch (\Exception $e) {
+            throw new InvalidTokenException(Lang::get('info.invalid_token'), Response::HTTP_UNAUTHORIZED);
+        }
+    
+        if ($credentials->iss !== JsonWebToken::REFRESH_TOKEN_ISS) {
+            throw new InvalidTokenIssuerException(Lang::get('info.invalid_token'), Response::HTTP_UNAUTHORIZED);
+        }
+    
+        $user = User::find($credentials->sub);
+        
+        if (!$user) {
+            throw new UserNotFoundForTokenException(Lang::get('info.invalid_token'), Response::HTTP_UNAUTHORIZED);             
+        }
+        
+        return JsonWebToken::generateJWTTokensForUser($user);    
     }
     
     

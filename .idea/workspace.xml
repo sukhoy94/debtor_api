@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/info.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,12 +27,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="master" />
-                    <option name="lastUsedInstant" value="1592138181" />
+                    <option name="branchName" value="develop" />
+                    <option name="lastUsedInstant" value="1594613551" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="develop" />
-                    <option name="lastUsedInstant" value="1592136716" />
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1592138181" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="DEB-API-14" />
@@ -174,10 +177,34 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="772" y="319" width="1016" height="902" key="#Intentions" timestamp="1594614452168">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="772" y="319" width="1016" height="902" key="#Intentions/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614452168" />
+    <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594614679504">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614679504" />
     <state x="1060" y="494" key="FileChooserDialogImpl" timestamp="1592139656231">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="1060" y="494" key="FileChooserDialogImpl/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592139656231" />
+    <state width="1727" height="386" key="GridCell.Tab.0.bottom" timestamp="1594613603132">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state width="1727" height="386" key="GridCell.Tab.0.bottom/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594613603132" />
+    <state width="1727" height="386" key="GridCell.Tab.0.center" timestamp="1594613603132">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state width="1727" height="386" key="GridCell.Tab.0.center/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594613603132" />
+    <state width="1727" height="386" key="GridCell.Tab.0.left" timestamp="1594613603132">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state width="1727" height="386" key="GridCell.Tab.0.left/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594613603132" />
+    <state width="1727" height="386" key="GridCell.Tab.0.right" timestamp="1594613603132">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state width="1727" height="386" key="GridCell.Tab.0.right/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594613603132" />
     <state x="248" y="162" key="MergeDialog" timestamp="1592136741751">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
@@ -186,9 +213,13 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="918" y="501" key="MultipleFileMergeDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592136741757" />
-    <state x="936" y="393" width="672" height="676" key="search.everywhere.popup" timestamp="1592137633068">
+    <state x="1016" y="438" key="NewPhpClassDialog" timestamp="1594614599617">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="936" y="393" width="672" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592137633068" />
+    <state x="1016" y="438" key="NewPhpClassDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614599617" />
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1594613739466">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594613739466" />
   </component>
 </project>
