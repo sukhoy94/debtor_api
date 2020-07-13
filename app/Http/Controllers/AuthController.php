@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\Auth\AuthBaseException;
 use App\Http\Requests\User\UserAuthenticateRequest;
 use App\Models\JsonWebToken;
 use App\Repositories\User\UserEloquentRepository;
@@ -70,31 +71,13 @@ class AuthController extends Controller
      */
     public function refreshToken(Request $request)
     {
-        $token = $request->token;
-    
-        if (!$token) {
-            return $this->errorResponseWithMessage(Lang::get('info.token_not_provided'), Response::HTTP_UNAUTHORIZED);
-        }
-    
+        $authService = AuthServiceFactory::create();
+        
         try {
-            $credentials = JWT::decode($token, env('JWT_SECRET'), ['HS256']);
-        } catch (ExpiredException $e) {
-            return $this->errorResponseWithMessage(Lang::get('info.token_is_expired'), Response::HTTP_UNAUTHORIZED);
-        } catch (\Exception $e) {
-            return $this->errorResponseWithMessage('An error while decoding token.', Response::HTTP_UNAUTHORIZED);
-        }
-    
-        if ($credentials->iss !== JsonWebToken::REFRESH_TOKEN_ISS) {
-            return $this->errorResponseWithMessage('An error while decoding token.', Response::HTTP_UNAUTHORIZED);
-        }
-    
-        $user = User::find($credentials->sub);
-    
-        if ($user) {
-            $tokens = JsonWebToken::generateJWTTokensForUser($user);
-            return $this->successResponseWithData($tokens);
-        } else {
-            return $this->errorResponseWithMessage('Invalid token', Response::HTTP_UNAUTHORIZED);
-        }
+            $tokens = $authService->refreshToken($request->token);
+            return $this->successResponseWithData($tokens);            
+        } catch (AuthBaseException $exception) {
+            return $this->errorResponseWithMessage($exception->getMessage(), $exception->getCode());
+        }    
     }
 }
