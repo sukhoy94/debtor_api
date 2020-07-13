@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/Services/Auth/AuthServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Services/Auth/AuthServiceTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +95,6 @@
       <path value="$PROJECT_DIR$/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/mockery/mockery" />
-      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
       <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
@@ -118,7 +114,6 @@
       <path value="$PROJECT_DIR$/vendor/symfony/translation" />
       <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
-      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/vendor/symfony/process" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
@@ -159,12 +154,28 @@
       <path value="$PROJECT_DIR$/vendor/league/fractal" />
       <path value="$PROJECT_DIR$/vendor/spatie/fractalistic" />
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-fractal" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/symfony/debug" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QV5SF63plCu73onDjdhAdKmmPi" />
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../php/symfony_demo" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -181,10 +192,10 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="772" y="319" width="1016" height="902" key="#Intentions/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614452168" />
-    <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594614679504">
+    <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594615600078">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614679504" />
+    <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594615600078" />
     <state x="1060" y="494" key="FileChooserDialogImpl" timestamp="1592139656231">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
@@ -217,6 +228,10 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="1016" y="438" key="NewPhpClassDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614599617" />
+    <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1594615057065">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594615057065" />
     <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1594613739466">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
