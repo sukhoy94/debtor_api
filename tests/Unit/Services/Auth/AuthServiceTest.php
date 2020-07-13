@@ -4,6 +4,7 @@
 namespace Tests\Unit\Services\Auth;
 
 
+use App\Exceptions\Auth\RefreshTokenNotProvidedException;
 use App\Models\User;
 use App\Services\Auth\AuthService;
 use Tests\TestCase;
@@ -44,10 +45,21 @@ class AuthServiceTest extends TestCase
      */
     public function get_user_throws_exception_if_user_instance_not_exists() 
     {
-        $dummyEmail = 'lol@test123@test.test';        
+        $dummyEmail = 'dummy_lol@test123@test.testdummy';        
         $this->expectException(\Exception::class);
         
         $this->authService->getUser($dummyEmail);
+    }
+    
+    
+    /**
+     * vendor\bin\phpunit --filter refresh_token_throws_RefreshTokenNotProvidedException_if_no_token_provided tests/Unit/Services/Auth/AuthServiceTest.php
+     * @test
+    */
+    public function refresh_token_throws_RefreshTokenNotProvidedException_if_no_token_provided()
+    {
+        $this->expectException(RefreshTokenNotProvidedException::class);
+        $this->authService->refreshToken('');
     }
             
 }
