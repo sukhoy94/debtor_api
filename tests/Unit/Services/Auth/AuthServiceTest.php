@@ -49,5 +49,5 @@ class AuthServiceTest extends TestCase
         
         $this->authService->getUser($dummyEmail);
     }
-        
+            
 }

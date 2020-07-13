@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Auth/AuthService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/info.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/info.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Unit/Services/Auth/AuthServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Services/Auth/AuthServiceTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -217,6 +214,10 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="1016" y="438" key="NewPhpClassDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614599617" />
+    <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1594615057065">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594615057065" />
     <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1594613739466">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
