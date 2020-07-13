@@ -5,6 +5,7 @@ namespace Tests\Unit\Services\Auth;
 
 
 use App\Exceptions\Auth\RefreshTokenNotProvidedException;
+use App\Exceptions\Auth\TokenExpiredException;
 use App\Models\User;
 use App\Services\Auth\AuthService;
 use Tests\TestCase;
@@ -28,7 +29,8 @@ class AuthServiceTest extends TestCase
     /**
      * vendor\bin\phpunit --filter get_user_returns_instance_of_user_if_user_exists tests/Unit/Services/Auth/AuthServiceTest.php
      * @test
-     */
+     */    
+    // TODO: test is failing - need fix
     public function get_user_returns_instance_of_user_if_user_exists() 
     {
         $userFromDB = User::get()->first(); 
