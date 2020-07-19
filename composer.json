@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.0",
         "mailgun/mailgun-php": "^3.0",
         "nyholm/psr7": "^1.2",
-        "spatie/laravel-fractal": "^5.7"
+        "spatie/laravel-fractal": "^5.7",
+        "webmozart/assert": "^1.9"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
