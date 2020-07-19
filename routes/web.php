@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('verify-user/{token?}', 'User\UserController@verifyUser')->name('user.verify');
+Route::get('/auth/activations-link/{token?}', 'User\UserController@verifyUser')->name('user.verify');

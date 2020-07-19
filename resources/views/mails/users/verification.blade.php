@@ -13,7 +13,7 @@
 </p>
 <p>
     Thank you for your registration on {{ $app_name }}! Please activate your account with this link:
-    <a href="{{ $confirmation_link }}">{{ $confirmation_link }}</a>
+    <a href="{{ $activation_link }}">{{ $activation_link }}</a>
 </p>
 </body>
 </html>

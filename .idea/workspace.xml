@@ -3,21 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/Services/Auth/AuthServiceTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/Services/Auth/AuthServiceTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/VerificationEmail.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Mail/VerificationEmail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mails/users/verification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mails/users/verification.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="2" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -172,8 +177,13 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1QV5SF63plCu73onDjdhAdKmmPi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../php/symfony_demo" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -181,13 +191,28 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="" />
+      <created>1594702689488</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594702689488</updated>
+      <workItem from="1594702704982" duration="34000" />
+      <workItem from="1595062502787" duration="1714000" />
+      <workItem from="1595064806838" duration="473000" />
+      <workItem from="1595172369734" duration="2708000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
     <state x="772" y="319" width="1016" height="902" key="#Intentions" timestamp="1594614452168">
@@ -198,10 +223,10 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594616626643" />
-    <state x="1060" y="494" key="FileChooserDialogImpl" timestamp="1592139656231">
+    <state x="1060" y="494" key="FileChooserDialogImpl" timestamp="1594702739039">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="1060" y="494" key="FileChooserDialogImpl/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1592139656231" />
+    <state x="1060" y="494" key="FileChooserDialogImpl/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594702739039" />
     <state width="1727" height="386" key="GridCell.Tab.0.bottom" timestamp="1594613603132">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
@@ -234,9 +259,13 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594615057065" />
-    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1594617232779">
+    <state x="925" y="432" width="710" height="616" key="find.popup" timestamp="1595175054133">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594617232779" />
+    <state x="925" y="432" width="710" height="616" key="find.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595175054133" />
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1595174829786">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595174829786" />
   </component>
 </project>

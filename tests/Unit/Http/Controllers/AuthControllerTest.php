@@ -37,12 +37,15 @@ class AuthControllerTest extends TestCase
      */
     public function success_login_returns_access_and_refresh_tokens_in_data_object()
     {
+        app()->detectEnvironment(function() { return 'local'; });
+    
         $user = User::get()->first();
 
         $response = $this->post('/api/auth/login', [
             'email' => $user->email,
-            'password' => 12345678,
+            'password' => config('api.dev_password'),
         ]);
+        
 
         $this->assertArrayHasKey('accessToken', $response->json()['data']);
         $this->assertArrayHasKey('refreshToken', $response->json()['data']);
@@ -57,10 +60,10 @@ class AuthControllerTest extends TestCase
     {
         $response = $this->post('/api/auth/login', [
             'email' => 'wrong@wrong.wrong',
-            'password' => 12345678,
+            'password' => config('api.dev_password'),
         ]);
 
-        $response->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+        $response->assertStatus(Response::HTTP_NOT_FOUND);
     }
 
     /**
