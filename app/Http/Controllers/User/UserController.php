@@ -75,7 +75,7 @@ class UserController extends Controller
         $user = $this->userRepository->getByVerificationToken($token);
         $user->markEmailAsVerified();
 
-        return view('users.verify', ['success' => (bool)$user->email_verified_at]);
+        return view('users.verify', ['success' => (bool) $user->email_verified_at]);
     }
 
     /**

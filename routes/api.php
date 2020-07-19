@@ -10,8 +10,9 @@ Route::prefix('auth')->group(function () {
     Route::post('login', 'AuthController@authenticate');
     Route::post('refresh', 'AuthController@refreshToken');
     Route::post('registration', 'User\UserController@store');
-    Route::post('activationlink', 'User\UserController@createActivationLink');
+    Route::post('activation-links', 'User\UserController@createActivationLink');
 });
+
 
 Route::group(['middleware' => ['jwt.verify']], function() {
     Route::get('/users/me', 'User\UserController@getAuthenticatedUser');

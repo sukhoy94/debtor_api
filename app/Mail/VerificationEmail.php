@@ -36,11 +36,18 @@ class VerificationEmail extends Mailable
     public function build()
     {
         return $this->from(self::FROM, self::NAME)
-            ->subject('Confirm registration please!')
+            ->subject('Activate your account!')
             ->view('mails.users.verification')
             ->with([
-                'confirmation_link' => config('app.web_base_url').'/auth/verify?t='.$this->user->getEmailVerificationToken(),
+                'activation_link' => $this->activationLink(),
                 'app_name' => config('app.name'),
             ]);
+    }
+    
+    private function activationLink(): string 
+    {
+        return route('user.verify', [
+            'token' => $this->user->getEmailVerificationToken(),
+        ]);
     }
 }
