@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="" />
+    <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/users/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/users/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/debtor_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/debtor_api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,6 +182,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/string" />
       <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QV5SF63plCu73onDjdhAdKmmPi" />
@@ -175,6 +191,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -200,7 +217,9 @@
       <workItem from="1594702704982" duration="34000" />
       <workItem from="1595062502787" duration="1714000" />
       <workItem from="1595064806838" duration="473000" />
-      <workItem from="1595172369734" duration="3292000" />
+      <workItem from="1595172369734" duration="4134000" />
+      <workItem from="1595662243325" duration="1655000" />
+      <workItem from="1595769742638" duration="2044000" />
     </task>
     <servers />
   </component>
@@ -256,13 +275,13 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594615057065" />
-    <state x="925" y="432" width="710" height="616" key="find.popup" timestamp="1595175054133">
+    <state x="925" y="432" width="710" height="616" key="find.popup" timestamp="1595769817987">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="925" y="432" width="710" height="616" key="find.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595175054133" />
-    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1595174829786">
+    <state x="925" y="432" width="710" height="616" key="find.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595769817987" />
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1595686126890">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595174829786" />
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595686126890" />
   </component>
 </project>
