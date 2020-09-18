@@ -27,6 +27,7 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^4.1",
+        "phpstan/phpstan": "^0.12.42",
         "phpunit/phpunit": "^8.5"
     },
     "config": {

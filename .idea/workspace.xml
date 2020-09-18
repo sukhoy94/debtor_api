@@ -2,20 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90f54552-4f33-4a3c-b5b8-d573ea903bd1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/users/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/users/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/debtor_api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/debtor_api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/User/UserAuthenticateRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/User/UserAuthenticateRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/sass/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/resources/sass/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,6 +180,7 @@
       <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpstan" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QV5SF63plCu73onDjdhAdKmmPi" />
@@ -202,8 +200,10 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -219,26 +219,32 @@
       <workItem from="1595064806838" duration="473000" />
       <workItem from="1595172369734" duration="4134000" />
       <workItem from="1595662243325" duration="1655000" />
-      <workItem from="1595769742638" duration="2044000" />
+      <workItem from="1595769742638" duration="2410000" />
+      <workItem from="1596002368382" duration="307000" />
+      <workItem from="1600456611689" duration="1353000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
     <state x="772" y="319" width="1016" height="902" key="#Intentions" timestamp="1594614452168">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="772" y="319" width="1016" height="902" key="#Intentions/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614452168" />
+    <state x="980" y="522" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1600457386993">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="980" y="522" key="#com.intellij.fileTypes.FileTypeChooser/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1600457386993" />
     <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594616626643">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="944" y="439" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594616626643" />
-    <state x="1060" y="494" key="FileChooserDialogImpl" timestamp="1594702739039">
+    <state x="1060" y="494" key="FileChooserDialogImpl" timestamp="1596002672251">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="1060" y="494" key="FileChooserDialogImpl/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594702739039" />
+    <state x="1060" y="494" key="FileChooserDialogImpl/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1596002672251" />
     <state width="1727" height="386" key="GridCell.Tab.0.bottom" timestamp="1594613603132">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
@@ -267,6 +273,10 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="1016" y="438" key="NewPhpClassDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594614599617" />
+    <state x="671" y="298" key="SettingsEditor" timestamp="1600457976186">
+      <screen x="0" y="40" width="2560" height="1400" />
+    </state>
+    <state x="671" y="298" key="SettingsEditor/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1600457976186" />
     <state x="1156" y="608" width="356" height="267" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1595175175060">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
@@ -275,13 +285,13 @@
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
     <state x="993" y="527" key="com.jetbrains.php.test.PhpNewTestDialog/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1594615057065" />
-    <state x="925" y="432" width="710" height="616" key="find.popup" timestamp="1595769817987">
+    <state x="925" y="432" width="710" height="664" key="find.popup" timestamp="1600456779399">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="925" y="432" width="710" height="616" key="find.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595769817987" />
-    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1595686126890">
+    <state x="925" y="432" width="710" height="664" key="find.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1600456779399" />
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup" timestamp="1600457484613">
       <screen x="0" y="40" width="2560" height="1400" />
     </state>
-    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1595686126890" />
+    <state x="936" y="393" width="840" height="676" key="search.everywhere.popup/2560.386.1536.832/0.40.2560.1400@0.40.2560.1400" timestamp="1600457484613" />
   </component>
 </project>

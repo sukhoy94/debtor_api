@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2439119c0f0798277c331a781cd98307",
+    "content-hash": "05d800c5f3984a1a0dc683ecd1d01847",
     "packages": [
         {
             "name": "brick/math",
@@ -5778,6 +5778,48 @@
                 "stub"
             ],
             "time": "2020-03-05T15:02:03+00:00"
+        },
+        {
+            "name": "phpstan/phpstan",
+            "version": "0.12.42",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "7c43b7c2d5ca6554f6231e82e342a710163ac5f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7c43b7c2d5ca6554f6231e82e342a710163ac5f4",
+                "reference": "7c43b7c2d5ca6554f6231e82e342a710163ac5f4",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1|^8.0"
+            },
+            "conflict": {
+                "phpstan/phpstan-shim": "*"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "time": "2020-09-02T13:14:53+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

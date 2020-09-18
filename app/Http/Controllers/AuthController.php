@@ -26,8 +26,11 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     use ApiResponser;
-
-
+    
+    
+    /**
+     * @var UserRepositoryInterface
+     */
     private $userRepository;
 
     /**
